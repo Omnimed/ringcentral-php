@@ -202,6 +202,13 @@ class Platform
             'access_token_ttl'  => self::ACCESS_TOKEN_TTL,
             'refresh_token_ttl' => self::REFRESH_TOKEN_TTL
 
+        ]) : !empty($options['jwt']) ? $this->requestToken(self::TOKEN_ENDPOINT, [
+
+            'grant_type'        => 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+            'assertion'         => $options['jwt'],
+            'access_token_ttl'  => self::ACCESS_TOKEN_TTL,
+            'refresh_token_ttl' => self::REFRESH_TOKEN_TTL
+
         ]) : $this->requestToken(self::TOKEN_ENDPOINT, [
 
             'grant_type'        => 'password',
